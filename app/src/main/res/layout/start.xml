@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/start_qinggongtitle"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/start_tv_qinggongbiao"
+        android:gravity="center"
+        android:textSize="@dimen/title"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_tv_qinggongbiao_content"
+        android:textSize="@dimen/tv_size"
+        android:layout_below="@id/start_qinggongtitle"
+        android:padding="@dimen/padding" />
+
+    <Button
+        android:id="@+id/start_btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_main"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:text="@string/start_btn_start"
+        android:textSize="@dimen/btn_size"
+        android:layout_margin="@dimen/margin" />
+
+</RelativeLayout>
