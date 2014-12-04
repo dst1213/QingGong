@@ -44,8 +44,9 @@ public class PeriodUtil {
         return t;
     }
 
-    public PeriodUtil(String year) {
-        this.year=getIntYear(year);
+    public PeriodUtil(int year) {
+        //this.year=getIntYear(year);
+        this.year=year;
         t=new Time("GMT+8");
         t.setToNow();
         currentYear=t.year;
@@ -127,7 +128,7 @@ public class PeriodUtil {
         int currentmonth = currentMonth;
         int availableDate = 12 - 9 - currentmonth;
         for (int i = currentmonth; i <= currentmonth + availableDate; i++) {
-            months.add(MonthUtil.getMonth(i));
+            months.add(MonthUtil.getMonthEn(i));
         }
         return months;
     }
@@ -145,14 +146,14 @@ public class PeriodUtil {
         List<String> month1=new ArrayList<String>();
         for(int i=1;i<=3;i++)
         {
-            month1.add(MonthUtil.getMonth(i));
+            month1.add(MonthUtil.getMonthEn(i));
         }
         months.put(year+"",month1);
 
         List<String> month2=new ArrayList<String>();
         for(int i=currentMonth;i<=12;i++)
         {
-            month2.add(MonthUtil.getMonth(i));
+            month2.add(MonthUtil.getMonthEn(i));
         }
         months.put((year-1)+"",month2);
         return months;
@@ -171,13 +172,13 @@ public class PeriodUtil {
         List<String> month1=new ArrayList<String>();
         for(int i=1;i<=3;i++)
         {
-            month1.add(MonthUtil.getMonth(i));
+            month1.add(MonthUtil.getMonthEn(i));
         }
         months.put(year+"",month1);
         List<String> month2=new ArrayList<String>();
         for(int i=4;i<=12;i++)
         {
-            month2.add(MonthUtil.getMonth(i));
+            month2.add(MonthUtil.getMonthEn(i));
         }
         months.put((year-1)+"",month2);
 

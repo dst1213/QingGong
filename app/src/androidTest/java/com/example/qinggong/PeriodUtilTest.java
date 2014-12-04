@@ -18,7 +18,7 @@ public class PeriodUtilTest extends InstrumentationTestCase {
 
     public void testGetIntYear()
     {
-        PeriodUtil periodUtil=new PeriodUtil("2014");
+        PeriodUtil periodUtil=new PeriodUtil(2014);
         assertEquals(2014,periodUtil.getIntYear("2014"));
         assertEquals(-1,periodUtil.getIntYear("2014a"));
         assertEquals(0,periodUtil.getIntYear("0000"));
@@ -26,29 +26,29 @@ public class PeriodUtilTest extends InstrumentationTestCase {
 
     public void testIsAgo() throws Exception
     {
-        PeriodUtil periodUtil=new PeriodUtil("2014");
+        PeriodUtil periodUtil=new PeriodUtil(2014);
         assertEquals(false,periodUtil.isAgo());
-        periodUtil=new PeriodUtil("2013");
+        periodUtil=new PeriodUtil(2013);
         assertEquals(true,periodUtil.isAgo());
-        periodUtil=new PeriodUtil("2015");
+        periodUtil=new PeriodUtil(2015);
         assertEquals(false,periodUtil.isAgo());
     }
     public void testTimeEnough() throws Exception{
-        PeriodUtil periodUtil=new PeriodUtil("2014");
+        PeriodUtil periodUtil=new PeriodUtil(2014);
         assertEquals(false,periodUtil.timeEnough());
         assertEquals(2014,periodUtil.getCurrentYear());
-        assertEquals(11,periodUtil.getCurrentMonth());
-        periodUtil=new PeriodUtil("2015");
+        assertEquals(12,periodUtil.getCurrentMonth());
+        periodUtil=new PeriodUtil(2015);
         assertEquals(true, periodUtil.timeEnough());
-        periodUtil=new PeriodUtil("2020");
+        periodUtil=new PeriodUtil(2020);
         assertEquals(true,periodUtil.timeEnough());
-        periodUtil=new PeriodUtil("2013");
+        periodUtil=new PeriodUtil(2013);
         assertEquals(false,periodUtil.timeEnough());
     }
 
     public void testCurrentYear() throws Exception
     {
-        PeriodUtil periodUtil=new PeriodUtil("2014");
+        PeriodUtil periodUtil=new PeriodUtil(2014);
         List<String> month=periodUtil.currentYear();
         assertEquals(0,month.size());
         assertEquals(new ArrayList<String>(),month);
@@ -58,7 +58,7 @@ public class PeriodUtilTest extends InstrumentationTestCase {
 
     public void testNextYear() throws Exception
     {
-        PeriodUtil periodUtil=new PeriodUtil("2015");
+        PeriodUtil periodUtil=new PeriodUtil(2015);
         TreeMap<String, List<String>> months = new TreeMap<String, List<String>>();
         List<String> month=new ArrayList<String>();
         months=periodUtil.nextYear();
@@ -77,20 +77,20 @@ public class PeriodUtilTest extends InstrumentationTestCase {
             }
         }
 
-        periodUtil=new PeriodUtil("2014");
+        periodUtil=new PeriodUtil(2014);
         months = new TreeMap<String, List<String>>();
         month=new ArrayList<String>();
         months=periodUtil.nextYear();
         //LogUtil.d("QingGong",months.size()+"");
         assertEquals(0,months.size());
 
-        periodUtil=new PeriodUtil("2013");
+        periodUtil=new PeriodUtil(2013);
         months = new TreeMap<String, List<String>>();
         month=new ArrayList<String>();
         months=periodUtil.nextYear();
         assertEquals(0,months.size());
 
-        periodUtil=new PeriodUtil("2017");
+        periodUtil=new PeriodUtil(2017);
         months = new TreeMap<String, List<String>>();
         month=new ArrayList<String>();
         months=periodUtil.nextYear();
@@ -100,7 +100,7 @@ public class PeriodUtilTest extends InstrumentationTestCase {
     public void testLastYear() throws Exception
     {
         //测试用例2015年
-        PeriodUtil periodUtil=new PeriodUtil("2015");
+        PeriodUtil periodUtil=new PeriodUtil(2015);
         TreeMap<String, List<String>> months = new TreeMap<String, List<String>>();
         List<String> month=new ArrayList<String>();
         months=periodUtil.lastYear();
@@ -108,7 +108,7 @@ public class PeriodUtilTest extends InstrumentationTestCase {
         assertEquals(0,months.size());
 
         //测试用例2013年
-        periodUtil=new PeriodUtil("2013");
+        periodUtil=new PeriodUtil(2013);
         months = new TreeMap<String, List<String>>();
         month=new ArrayList<String>();
         months=periodUtil.lastYear();
@@ -117,7 +117,7 @@ public class PeriodUtilTest extends InstrumentationTestCase {
 
 
         //测试用例2016年
-        periodUtil=new PeriodUtil("2016");
+        periodUtil=new PeriodUtil(2016);
         months = new TreeMap<String, List<String>>();
         month=new ArrayList<String>();
         months=periodUtil.lastYear();
@@ -162,7 +162,7 @@ public class PeriodUtilTest extends InstrumentationTestCase {
     public void testGetMonth() throws Exception
     {
 
-        PeriodUtil periodUtil=new PeriodUtil("2012");
+        PeriodUtil periodUtil=new PeriodUtil(2012);
         assertEquals(2014,periodUtil.getCurrentYear());
         TreeMap<String, List<String>> months=new TreeMap<String, List<String>>();
         months=periodUtil.getMonth();
@@ -171,7 +171,7 @@ public class PeriodUtilTest extends InstrumentationTestCase {
         assertEquals("不能设置以前的日期，请选择以后的时间",periodUtil.errorUtil.getError());
 
 
-        periodUtil=new PeriodUtil("2014");
+        periodUtil=new PeriodUtil(2014);
         periodUtil.setCurrentMonth(1);//这里设置月份为1月份，主要用来测试
         months.clear();
         months=periodUtil.getMonth();
@@ -194,7 +194,7 @@ public class PeriodUtilTest extends InstrumentationTestCase {
         //assertEquals("没有足够的时间怀孕，请选择更长的时间",periodUtil.errorUtil.getError());
 
 
-        periodUtil=new PeriodUtil("2015");
+        periodUtil=new PeriodUtil(2015);
         months.clear();
         months=periodUtil.getMonth();
         assertEquals(2,months.size());
@@ -208,9 +208,9 @@ public class PeriodUtilTest extends InstrumentationTestCase {
             String str_key=key.next();
             List<String> month=months.get(str_key);
             assertEquals("2014",str_key);
-            assertEquals(2,month.size());
-            assertEquals("eleven",month.get(0));
-            assertEquals("twelve",month.get(1));
+            assertEquals(1,month.size());
+            //assertEquals("eleven",month.get(0));
+            assertEquals("twelve",month.get(0));
         }
         if(key.hasNext())
         {
@@ -223,7 +223,7 @@ public class PeriodUtilTest extends InstrumentationTestCase {
             assertEquals("three",month.get(2));
         }
 
-        periodUtil=new PeriodUtil("2017");
+        periodUtil=new PeriodUtil(2017);
         months.clear();
         months=periodUtil.getMonth();
         assertEquals(2,months.size());

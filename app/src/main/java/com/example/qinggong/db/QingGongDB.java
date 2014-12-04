@@ -6,6 +6,7 @@ import android.text.format.Time;
 
 import com.example.qinggong.model.MyApplication;
 import com.example.qinggong.model.QingGongEntity;
+import com.example.qinggong.util.LogUtil;
 import com.example.qinggong.util.MonthUtil;
 import com.example.qinggong.util.PeriodUtil;
 
@@ -24,6 +25,7 @@ public class QingGongDB {
     static QingGongDB qingGongDB;
     SQLiteDatabase db;
 
+    public PeriodUtil periodUtil;
     private QingGongDB() {
         QingGongOpenHelper dbhelper=new QingGongOpenHelper(MyApplication.getContext(),DB_Name,null,VERSION);
         try {
@@ -43,55 +45,73 @@ public class QingGongDB {
         return qingGongDB;
     }
 
-    public String getQingGong(String month,String age)
+    public String getQingGong(String month,int age)
     {
-        String sex=null;
-        try
-        {
-            //通过月份和年龄作为检索条件
-            Cursor cursor=db.query("qinggongtable",new String[]{month},"age=?",new String[]{age},null,null,null);
-            if(cursor.moveToFirst())
-            {
-                do {
-                    sex=cursor.getString(cursor.getColumnIndex(month));//获得性别
-
-                }while (cursor.moveToNext());
-            }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return sex;
-    }
-
-    public List<String> getMonths(String year,String sex) {
-        List<String> months = new ArrayList<String>();
-
-        PeriodUtil periodUtil=new PeriodUtil(year);
-        TreeMap<String,List<String>> mapMonth=periodUtil.getMonth();
-        //
-        if(mapMonth.size()>=1) {
-            Iterator<String> key=mapMonth.keySet().iterator();
-            while (key.hasNext()) {
-                String strKey=key.next();
-                List<String> month=mapMonth.get(strKey);
+        String sex="";
+        if(age>=19 && age<=41) {
+            if (MonthUtil.isNumMonth(month))
+                month = MonthUtil.getMonthEn(Integer.parseInt(month));
+            if (MonthUtil.isEnMonth(month)) {
                 try {
-                    Cursor cursor = db.query("qinggongtable", month.toArray(new String[]{}), "age=?", new String[]{strKey}, null, null, null);
-                    if(cursor.moveToFirst()) {
+                    //通过月份和年龄作为检索条件
+                    Cursor cursor = db.query("qinggongtable", new String[]{month}, "age=?", new String[]{age + ""}, null, null, null);
+                    if (cursor.moveToFirst()) {
                         do {
-                            for (String m : month) {
-                                String tmp = strKey + "年-" + MonthUtil.getMonth(cursor.getString(cursor.getColumnIndex(m))) + "月,";
-                                months.add(tmp);
-                            }
+                            sex = cursor.getString(cursor.getColumnIndex(month));//获得性别
+
                         } while (cursor.moveToNext());
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
+        return sex;
+    }
+
+    public List<String> getMonths(int year,int age,String sex) {
+        List<String> months = new ArrayList<String>();
+//        if(!((age-1)>=19 && (age-1)<=41))
+//            return months;
+        age--;//先减掉一岁，因为获得的月份是从小到大的，所以会先获得小的年份
+        periodUtil=new PeriodUtil(year);
+        //periodUtil.setCurrentMonth(1);//这里是为了测试而修改
+        TreeMap<String,List<String>> mapMonth=periodUtil.getMonth();
+        LogUtil.d("QingGong","===============START==============");
+        LogUtil.d("QingGong",mapMonth.size()+"");
+        if(mapMonth.size()>=1) {
+            Iterator<String> key=mapMonth.keySet().iterator();
+            while (key.hasNext()) {
+                String strKey=key.next();
+                LogUtil.d("QingGong",strKey);
+                List<String> month=mapMonth.get(strKey);
+                LogUtil.d("QingGong",month.size()+"");
+                try {
+                    LogUtil.d("QingGong",age+"");
+                    Cursor cursor = db.query("qinggongtable", month.toArray(new String[]{}), "age=?", new String[]{age+""}, null, null, null);
+                    if(cursor.moveToFirst()) {
+                        do {
+                            for (String m : month) {
+                                LogUtil.d("QingGong",m);
+                                LogUtil.d("QingGong",cursor.getString(cursor.getColumnIndex(m)));
+                                if(cursor.getString(cursor.getColumnIndex(m)).indexOf("男")>=0)
+                                {
+                                    String tmp = strKey + "年-" + MonthUtil.getMonthNum(m) + "月,";
+                                    LogUtil.d("QingGong",tmp);
+                                    months.add(tmp);
+                                }
+                            }
+                        } while (cursor.moveToNext());
+                    }
+                    age+=1;
+                    if(!(age>=19 && age<=41))//这里判断年龄是否超过，如果超过则直接中断。其实也没有必要，因为不在范围内的年龄，在数据库里根本没有数据。
+                        break;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        LogUtil.d("QingGong","========END=======");
         return months;
     }
 }
