@@ -7,4 +7,5 @@
     <dimen name="btn_size">24sp</dimen>
     <dimen name="padding">15dp</dimen>
     <dimen name="margin">5dp</dimen>
+    <dimen name="token">20sp</dimen>
 </resources>

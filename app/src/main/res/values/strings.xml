@@ -7,5 +7,54 @@
     <string name="start_tv_qinggongbiao">清宫表</string>
     <string name="start_tv_qinggongbiao_content">\t\t清宫生男生女表是由中国古人发明的，埋在一个有700多年历史的皇陵下。由于时代久远，清宫表来历的真实性无从考究，古人是根据阴阳五行和八卦推算演译，再加上时间推算而得。清宫表由两部分构成，横坐标为怀孕月份，从1月到12月，纵坐标为年龄，从18岁到45岁，很多人问到清宫表到底怎样观看，要点就在这两部分，女性年龄是以农历虚龄（即真实年龄加1岁）算，而怀孕月份即是受孕的那个月份，当然亦是以农历算，横坐标和纵坐标对正过来就测试到是生男还是生女。</string>
     <string name="start_btn_start">开始</string>
+    <string name="main_tv_title_text">主界面</string>
+    <string name="main_btn_done_text">已怀孕</string>
+    <string name="main_btn_ready_text">备孕</string>
+    <string name="main_tv_what_text">请选择您现是已怀孕？还是备孕？</string>
+    <string name="done_tv_title_text">已怀孕</string>
+    <string name="done_tv_age_month_text">请输入您的年龄(虚岁)和怀孕的月份：</string>
+    <string name="done_sp_age_prompt">请选择年龄：</string>
+    <string name="done_sp_month_prompt">请选择月份：</string>
+    <string name="done_btn_return_text">主界面</string>
+    <string name="done_btn_result_text">预测</string>
 
+    <string-array name="ages">
+        <item>19岁</item>
+        <item>20岁</item>
+        <item>21岁</item>
+        <item>22岁</item>
+        <item>23岁</item>
+        <item>24岁</item>
+        <item>25岁</item>
+        <item>26岁</item>
+        <item>27岁</item>
+        <item>28岁</item>
+        <item>29岁</item>
+        <item>30岁</item>
+        <item>31岁</item>
+        <item>32岁</item>
+        <item>33岁</item>
+        <item>34岁</item>
+        <item>35岁</item>
+        <item>36岁</item>
+        <item>37岁</item>
+        <item>38岁</item>
+        <item>39岁</item>
+        <item>40岁</item>
+        <item>41岁</item>
+    </string-array>
+    <string-array name="months">
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+    </string-array>
 </resources>
