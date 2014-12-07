@@ -105,8 +105,8 @@ public class DoneActivity extends BaseActivity {
     {
         //String[] ages={"19岁","20岁","21岁","22岁","23岁","24岁","25岁","26岁","27岁","28岁","29岁","30岁","31岁","32岁","33岁","34岁","35岁","36岁","37岁","38岁","39岁","40岁","41岁"};
         String[] ages=getResources().getStringArray(R.array.ages);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,ages);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,ages);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //adapter.setDropDownViewResource(R.layout.drop_down_item);//这里可以加载一个简单布局
         sp_ages.setAdapter(adapter);
     }

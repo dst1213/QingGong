@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/done_title"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:text="@string/done_tv_title_text"
             android:textSize="@dimen/title"
             android:gravity="center"
@@ -52,6 +52,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/bg_third"
                     android:prompt="@string/done_sp_age_prompt"></Spinner>
             </LinearLayout>
 
@@ -72,6 +73,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/bg_third"
                     android:prompt="@string/done_sp_month_prompt"></Spinner>
 
             </LinearLayout>

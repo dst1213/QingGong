@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/ready_tv_title"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:text="@string/ready_tv_title_text"
             android:layout_alignParentTop="true"
             android:textSize="@dimen/title"
@@ -51,6 +51,7 @@
                     android:id="@+id/ready_sp_year"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_third"
                     android:layout_weight="1"></Spinner>
             </LinearLayout>
 
@@ -70,6 +71,7 @@
                     android:id="@+id/ready_sp_sex"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_third"
                     android:layout_weight="1"></Spinner>
             </LinearLayout>
 
@@ -89,6 +91,7 @@
                     android:id="@+id/ready_sp_age"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_third"
                     android:layout_weight="1"></Spinner>
             </LinearLayout>
 
