@@ -77,27 +77,27 @@ public class QingGongDB {
         periodUtil=new PeriodUtil(year);
         //periodUtil.setCurrentMonth(1);//这里是为了测试而修改
         TreeMap<String,List<String>> mapMonth=periodUtil.getMonth();
-        LogUtil.d("QingGong","===============START==============");
-        LogUtil.d("QingGong",mapMonth.size()+"");
+        //LogUtil.d("QingGong","===============START==============");
+        //LogUtil.d("QingGong",mapMonth.size()+"");
         if(mapMonth.size()>=1) {
             Iterator<String> key=mapMonth.keySet().iterator();
             while (key.hasNext()) {
                 String strKey=key.next();
-                LogUtil.d("QingGong",strKey);
+                //LogUtil.d("QingGong",strKey);
                 List<String> month=mapMonth.get(strKey);
-                LogUtil.d("QingGong",month.size()+"");
+                //LogUtil.d("QingGong",month.size()+"");
                 try {
                     LogUtil.d("QingGong",age+"");
                     Cursor cursor = db.query("qinggongtable", month.toArray(new String[]{}), "age=?", new String[]{age+""}, null, null, null);
                     if(cursor.moveToFirst()) {
                         do {
                             for (String m : month) {
-                                LogUtil.d("QingGong",m);
-                                LogUtil.d("QingGong",cursor.getString(cursor.getColumnIndex(m)));
+                                //LogUtil.d("QingGong",m);
+                                //LogUtil.d("QingGong",cursor.getString(cursor.getColumnIndex(m)));
                                 if(cursor.getString(cursor.getColumnIndex(m)).indexOf("男")>=0)
                                 {
                                     String tmp = strKey + "年-" + MonthUtil.getMonthNum(m) + "月,";
-                                    LogUtil.d("QingGong",tmp);
+                                    //LogUtil.d("QingGong",tmp);
                                     months.add(tmp);
                                 }
                             }
@@ -111,7 +111,7 @@ public class QingGongDB {
                 }
             }
         }
-        LogUtil.d("QingGong","========END=======");
+        //LogUtil.d("QingGong","========END=======");
         return months;
     }
 }

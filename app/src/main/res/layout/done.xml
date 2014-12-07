@@ -44,7 +44,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="年龄："
+                    android:text="@string/ready_done_tv_age_select_text"
                     android:textSize="@dimen/btn_size" />
 
                 <Spinner
@@ -64,7 +64,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="月份："
+                    android:text="@string/done_tv_month_text"
                     android:textSize="@dimen/btn_size" />
 
                 <Spinner

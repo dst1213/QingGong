@@ -12,7 +12,9 @@ import android.widget.Toast;
 
 import com.example.qinggong.R;
 import com.example.qinggong.db.QingGongDB;
+import com.example.qinggong.util.CustomAlertDialog;
 import com.example.qinggong.util.LogUtil;
+import com.example.qinggong.util.MonthUtil;
 
 /**
  * Created by ZJGJK03 on 2014/12/5.
@@ -49,11 +51,11 @@ public class DoneActivity extends BaseActivity {
                     finish();
                     break;
                 case R.id.done_btn_result:
-                    int age=getAge(sp_ages.getSelectedItem().toString());
-                    String month=getMonth(sp_months.getSelectedItem().toString());
+                    int age= MonthUtil.getAge(sp_ages.getSelectedItem().toString());
+                    String month=MonthUtil.getMonth(sp_months.getSelectedItem().toString());
                     String result=qingGongDB.getQingGong(month,age);
-                    new AlertDialog.Builder(DoneActivity.this).setTitle("预测结果是："+result+"孩").setView(getImage(result)).setPositiveButton("确定",null).show();
-
+                    showDialog(result);
+                    //new AlertDialog.Builder(DoneActivity.this).setTitle("预测结果是："+result+"孩").setView(getImage(result)).setPositiveButton("确定",null).show();
                     //Toast.makeText(DoneActivity.this,value,Toast.LENGTH_SHORT).show();
                     break;
 
@@ -63,35 +65,41 @@ public class DoneActivity extends BaseActivity {
             }
         }
     };
-    ImageView getImage(String sex)
+
+    void showDialog(String result)
     {
-//        int tmp=sex.indexOf("男");
-//        LogUtil.d("QingGong",tmp+"");
-//        tmp=sex.indexOf("女");
-//        LogUtil.d("QingGong",tmp+"");
-//        LogUtil.d("QingGong","=================");
-//        LogUtil.d("QingGong",sex);
-        ImageView imageView=new ImageView(DoneActivity.this);
+        CustomAlertDialog alertDialog=new CustomAlertDialog();
+        alertDialog.setCancel(false,"");
+        alertDialog.setOk(true,getResources().getString(R.string.done_alertdialog_btn_ok_text));
+        alertDialog.setContent(false,"");
+        alertDialog.setTitleText(getResources().getString(R.string.done_alertdialog_title_text)+result+"孩");
+        alertDialog.setCancelable(false);
+        alertDialog.setImage(true,getImage(result));
+        alertDialog.showDialog(DoneActivity.this,null);
+    }
+
+//    ImageView getImage(String sex)
+//    {
+//        ImageView imageView=new ImageView(DoneActivity.this);
+//        if(sex.indexOf("男")>=0)
+//            imageView.setImageResource(R.drawable.boy);
+//        else if(sex.indexOf("女")>=0)
+//            imageView.setImageResource(R.drawable.girl);
+//        else
+//            imageView.setImageResource(R.drawable.ic_launcher);
+//        return imageView;
+//    }
+
+    int getImage(String sex)
+    {
+        int resourceid=-1;
         if(sex.indexOf("男")>=0)
-            imageView.setImageResource(R.drawable.boy);
+            resourceid=R.drawable.boy;
         else if(sex.indexOf("女")>=0)
-            imageView.setImageResource(R.drawable.girl);
+            resourceid=R.drawable.girl;
         else
-            imageView.setImageResource(R.drawable.ic_launcher);
-        return imageView;
-    }
-    int getAge(String age)
-    {
-        String tmp=age.substring(0,age.length()-1);
-        int iAge=Integer.parseInt(tmp);
-        LogUtil.d("QingGong",iAge+"");
-        return iAge;
-    }
-    String getMonth(String month)
-    {
-        String tmp=month.substring(0,month.length()-1);
-        LogUtil.d("QingGong",tmp);
-        return tmp;
+            resourceid=R.drawable.ic_launcher;
+        return resourceid;
     }
     void initSpinnerAge()
     {

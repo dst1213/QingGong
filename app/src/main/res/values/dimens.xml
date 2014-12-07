@@ -8,4 +8,6 @@
     <dimen name="padding">15dp</dimen>
     <dimen name="margin">5dp</dimen>
     <dimen name="token">20sp</dimen>
+    <dimen name="exit_title">30sp</dimen>
+    <dimen name="exit_tv_content">20sp</dimen>
 </resources>

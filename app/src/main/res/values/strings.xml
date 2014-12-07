@@ -10,13 +10,29 @@
     <string name="main_tv_title_text">主界面</string>
     <string name="main_btn_done_text">已怀孕</string>
     <string name="main_btn_ready_text">备孕</string>
-    <string name="main_tv_what_text">请选择您现是已怀孕？还是备孕？</string>
+    <string name="main_tv_what_text">请选择您现是已怀孕？还是备孕?</string>
     <string name="done_tv_title_text">已怀孕</string>
     <string name="done_tv_age_month_text">请输入您的年龄(虚岁)和怀孕的月份：</string>
     <string name="done_sp_age_prompt">请选择年龄：</string>
     <string name="done_sp_month_prompt">请选择月份：</string>
+    <string name="done_tv_month_text">月份：</string>
     <string name="done_btn_return_text">主界面</string>
     <string name="done_btn_result_text">预测</string>
+    <string name="done_alertdialog_title_text">结果：</string>
+    <string name="done_alertdialog_btn_ok_text">确定</string>
+    <string name="ready_tv_title_text">备孕</string>
+    <string name="ready_tv_year_text">请选择孩子出生的年份、期望孩子的性别和您今年的年龄(虚岁):</string>
+    <string name="ready_tv_year_select_text">年份：</string>
+    <string name="ready_tv_sex_select_text">性别：</string>
+    <string name="ready_done_tv_age_select_text">虚岁：</string>
+    <string name="ready_btn_return_text">主界面</string>
+    <string name="ready_btn_result_text">预测</string>
+    <string name="ready_alertdialog_title_text">预测结果</string>
+    <string name="ready_alertdialog_btn_ok_text">确定</string>
+    <string name="exit_btn_cancel_text">取消</string>
+    <string name="exit_btn_ok_text">退出</string>
+    <string name="exit_tv_title_text">退出</string>
+    <string name="exit_tv_content_text">是否要真的退出?</string>
 
     <string-array name="ages">
         <item>19岁</item>

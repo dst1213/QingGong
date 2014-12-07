@@ -5,40 +5,44 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.qinggong.R;
+import com.example.qinggong.util.CustomAlertDialog;
+import com.example.qinggong.util.CustomAlertDialogCallbackListener;
 
 /**
  * Created by ZJGJK03 on 2014/12/3.
  */
 public class MainActivity extends BaseActivity {
 
-    Button btn_done,btn_ready;
+    Button btn_done, btn_ready;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        btn_done=(Button)findViewById(R.id.main_btn_done);
-        btn_ready=(Button)findViewById(R.id.main_btn_ready);
-        if(btn_done!=null)
+        btn_done = (Button) findViewById(R.id.main_btn_done);
+        btn_ready = (Button) findViewById(R.id.main_btn_ready);
+        if (btn_done != null)
             btn_done.setOnClickListener(listener);
-        if(btn_ready!=null)
+        if (btn_ready != null)
             btn_ready.setOnClickListener(listener);
     }
 
-    View.OnClickListener listener=new View.OnClickListener() {
+    View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent;
-            switch (v.getId())
-            {
+            switch (v.getId()) {
                 case R.id.main_btn_done:
-                    intent=new Intent(MainActivity.this,DoneActivity.class);
+                    intent = new Intent(MainActivity.this, DoneActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.main_btn_ready:
-                    intent=new Intent(MainActivity.this,ReadyActivity.class);
+                    intent = new Intent(MainActivity.this, ReadyActivity.class);
                     startActivity(intent);
                     break;
                 default:
@@ -50,6 +54,27 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
-        ActivityCollector.finishAll(MainActivity.this);
+        //ActivityCollector.finishAll(MainActivity.this);
+        exitApp();
+    }
+
+    void exitApp() {
+        CustomAlertDialog alertDialog=new CustomAlertDialog();
+        alertDialog.setCancel(true,getResources().getString(R.string.exit_btn_cancel_text));
+        alertDialog.setOk(true,getResources().getString(R.string.exit_btn_ok_text));
+        alertDialog.setContent(true,getResources().getString(R.string.exit_tv_content_text));
+        alertDialog.setTitleText(getResources().getString(R.string.exit_tv_title_text));
+        alertDialog.setCancelable(true);
+        alertDialog.showDialog(MainActivity.this,new CustomAlertDialogCallbackListener() {
+            @Override
+            public void onClickOk() {
+                ActivityCollector.finishAll();
+            }
+
+            @Override
+            public void onClickCancel() {
+
+            }
+        });
     }
 }

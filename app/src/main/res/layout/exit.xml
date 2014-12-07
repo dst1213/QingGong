@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_second"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/exit_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:text="@string/exit_tv_title_text"
+            android:textSize="@dimen/exit_title"
+            android:layout_alignParentTop="true" />
+
+        <LinearLayout
+            android:id="@+id/exit_ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_below="@+id/exit_tv_title">
+
+            <TextView
+                android:id="@+id/exit_tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/exit_tv_content"
+                android:padding="@dimen/padding"
+                android:text="@string/exit_tv_content_text" />
+
+            <ImageView
+                android:id="@+id/exit_iv_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/margin"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/exit_btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_main"
+            android:layout_margin="@dimen/margin"
+            android:textSize="@dimen/btn_size"
+            android:text="@string/exit_btn_cancel_text" />
+
+        <Button
+            android:id="@+id/exit_btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_main"
+            android:layout_margin="@dimen/margin"
+            android:textSize="@dimen/btn_size"
+            android:text="@string/exit_btn_ok_text" />
+    </LinearLayout>
+
+</LinearLayout>
