@@ -65,9 +65,9 @@ public class ReadyActivity extends BaseActivity {
                     int year = MonthUtil.getYear(sp_year.getSelectedItem().toString());
                     int age = MonthUtil.getAge(sp_age.getSelectedItem().toString());
                     String sex = MonthUtil.getSex(sp_sex.getSelectedItem().toString());
-                    age = getRealAge(year, age);
+                    //age = getRealAge(year, age);//此句代码其实是多余，会更加上用户弄不清楚
                     //LogUtil.d("QingGong",year+"");
-                    //LogUtil.d("QingGong",age+"");
+                    //LogUtil.d("QingGong",sex);
                     List<String> value = qingGongDB.getMonths(year, age, sex);
                     String result = "";
                     if (value.size() > 0) {

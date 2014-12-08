@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_main">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@drawable/bg_main">
 
         <TextView
             android:id="@+id/ready_tv_title"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="65dp"
             android:text="@string/ready_tv_title_text"
             android:layout_alignParentTop="true"
             android:textSize="@dimen/title"
@@ -26,14 +26,13 @@
             android:text="@string/ready_tv_year_text"
             android:layout_below="@id/ready_tv_title"
             android:textSize="@dimen/btn_size"
-            android:padding="@dimen/padding" />
+            android:paddingTop="@dimen/padding" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_below="@+id/ready_tv_year"
-            android:padding="@dimen/padding">
+            android:layout_below="@+id/ready_tv_year">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,11 +63,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ready_tv_sex_select_text"
+                    android:text="@string/ready_done_tv_age_select_text"
                     android:textSize="@dimen/btn_size" />
 
                 <Spinner
-                    android:id="@+id/ready_sp_sex"
+                    android:id="@+id/ready_sp_age"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_third"
@@ -84,16 +83,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ready_done_tv_age_select_text"
+                    android:text="@string/ready_tv_sex_select_text"
                     android:textSize="@dimen/btn_size" />
 
                 <Spinner
-                    android:id="@+id/ready_sp_age"
+                    android:id="@+id/ready_sp_sex"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_third"
                     android:layout_weight="1"></Spinner>
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"

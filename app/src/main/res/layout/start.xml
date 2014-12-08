@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/start_qinggongtitle"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:text="@string/start_tv_qinggongbiao"
         android:gravity="center"
         android:textSize="@dimen/title"

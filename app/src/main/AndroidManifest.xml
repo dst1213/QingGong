@@ -19,6 +19,7 @@
             android:launchMode="singleTask" />
         <activity android:name=".activity.DoneActivity"/>
         <activity android:name=".activity.ReadyActivity"/>
+        <activity android:name=".activity.DetailActivity"/>
     </application>
 
 </manifest>

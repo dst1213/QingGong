@@ -61,6 +61,7 @@ public class QingGongDB {
 
                         } while (cursor.moveToNext());
                     }
+                    cursor.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -77,31 +78,24 @@ public class QingGongDB {
         periodUtil=new PeriodUtil(year);
         //periodUtil.setCurrentMonth(1);//这里是为了测试而修改
         TreeMap<String,List<String>> mapMonth=periodUtil.getMonth();
-        //LogUtil.d("QingGong","===============START==============");
-        //LogUtil.d("QingGong",mapMonth.size()+"");
         if(mapMonth.size()>=1) {
             Iterator<String> key=mapMonth.keySet().iterator();
             while (key.hasNext()) {
                 String strKey=key.next();
-                //LogUtil.d("QingGong",strKey);
                 List<String> month=mapMonth.get(strKey);
-                //LogUtil.d("QingGong",month.size()+"");
                 try {
-                    LogUtil.d("QingGong",age+"");
                     Cursor cursor = db.query("qinggongtable", month.toArray(new String[]{}), "age=?", new String[]{age+""}, null, null, null);
                     if(cursor.moveToFirst()) {
                         do {
                             for (String m : month) {
-                                //LogUtil.d("QingGong",m);
-                                //LogUtil.d("QingGong",cursor.getString(cursor.getColumnIndex(m)));
-                                if(cursor.getString(cursor.getColumnIndex(m)).indexOf("男")>=0)
+                                if(cursor.getString(cursor.getColumnIndex(m)).contains(sex))
                                 {
                                     String tmp = strKey + "年-" + MonthUtil.getMonthNum(m) + "月,";
-                                    //LogUtil.d("QingGong",tmp);
                                     months.add(tmp);
                                 }
                             }
                         } while (cursor.moveToNext());
+                        cursor.close();
                     }
                     age+=1;
                     if(!(age>=19 && age<=41))//这里判断年龄是否超过，如果超过则直接中断。其实也没有必要，因为不在范围内的年龄，在数据库里根本没有数据。
@@ -111,7 +105,26 @@ public class QingGongDB {
                 }
             }
         }
-        //LogUtil.d("QingGong","========END=======");
         return months;
+    }
+    public List<String> getMonths(String age)
+    {
+        List<String> month=new ArrayList<String>();
+        try
+        {
+            Cursor cursor=db.query("qinggongtable",null,"age=?",new String[]{age},null,null,null);
+            if(cursor.moveToFirst())
+            {
+                for(int i=1;i<=12;i++)
+                {
+                    month.add(i+"月==="+cursor.getString(i)+"孩");
+                }
+            }
+            cursor.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return month;
     }
 }

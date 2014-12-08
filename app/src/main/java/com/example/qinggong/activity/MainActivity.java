@@ -18,7 +18,7 @@ import com.example.qinggong.util.CustomAlertDialogCallbackListener;
  */
 public class MainActivity extends BaseActivity {
 
-    Button btn_done, btn_ready;
+    Button btn_done, btn_ready,btn_detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +26,13 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.main);
         btn_done = (Button) findViewById(R.id.main_btn_done);
         btn_ready = (Button) findViewById(R.id.main_btn_ready);
+        btn_detail=(Button)findViewById(R.id.main_btn_detail);
         if (btn_done != null)
             btn_done.setOnClickListener(listener);
         if (btn_ready != null)
             btn_ready.setOnClickListener(listener);
+        if(btn_detail!=null)
+            btn_detail.setOnClickListener(listener);
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
@@ -45,6 +48,9 @@ public class MainActivity extends BaseActivity {
                     intent = new Intent(MainActivity.this, ReadyActivity.class);
                     startActivity(intent);
                     break;
+                case R.id.main_btn_detail:
+                    intent=new Intent(MainActivity.this,DetailActivity.class);
+                    startActivity(intent);
                 default:
                     break;
             }

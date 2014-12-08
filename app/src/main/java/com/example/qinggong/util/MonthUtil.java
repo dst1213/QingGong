@@ -50,26 +50,26 @@ public class MonthUtil {
     {
         String tmp=age.substring(0,age.length()-1);
         int iAge=Integer.parseInt(tmp);
-        LogUtil.d("QingGong",iAge+"");
+        //LogUtil.d("QingGong",iAge+"");
         return iAge;
     }
     public static String getMonth(String month)
     {
         String tmp=month.substring(0,month.length()-1);
-        LogUtil.d("QingGong",tmp);
+        //LogUtil.d("QingGong",tmp);
         return tmp;
     }
     public static int getYear(String year)
     {
         String tmp=year.substring(0,year.length()-1);
         int iYear=Integer.parseInt(tmp);
-        LogUtil.d("QingGong",iYear+"");
+        //LogUtil.d("QingGong",iYear+"");
         return iYear;
     }
     public static String getSex(String sex)
     {
         String tmp=sex.substring(0,sex.length()-1);
-        LogUtil.d("QingGong",tmp);
+        //LogUtil.d("QingGong",tmp);
         return tmp;
     }
 }
