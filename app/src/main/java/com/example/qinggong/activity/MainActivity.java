@@ -104,7 +104,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        adsMogoLayoutCode.clearThread();
+        if (adsMogoLayoutCode != null)
+            adsMogoLayoutCode.clearThread();
         AdsMogoLayout.clear();
         super.onDestroy();
     }

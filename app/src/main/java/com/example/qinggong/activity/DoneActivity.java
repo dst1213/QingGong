@@ -187,7 +187,8 @@ public class DoneActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        adsMogoLayoutCode.clearThread();
+        if (adsMogoLayoutCode != null)
+            adsMogoLayoutCode.clearThread();
         super.onDestroy();
     }
 }
