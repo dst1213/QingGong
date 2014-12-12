@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="MogoID">8a4624fa02ba4cc190819ff0f45a5930</string>
     <string name="app_name">清宫预测表</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">设置</string>
@@ -22,7 +22,7 @@
     <string name="done_alertdialog_title_text">结果：</string>
     <string name="done_alertdialog_btn_ok_text">确定</string>
     <string name="ready_tv_title_text">规划怀孕日期</string>
-    <string name="ready_tv_year_text">\t请选择孩子出生的年份、您的年龄(虚岁)和期望孩子的性别:</string>
+    <string name="ready_tv_year_text">\t请选择孩子出生的年份、您的年龄(虚岁)和孩子的性别:</string>
     <string name="ready_tv_year_select_text">年份：</string>
     <string name="ready_tv_sex_select_text">性别：</string>
     <string name="ready_done_tv_age_select_text">虚岁：</string>

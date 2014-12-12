@@ -3,13 +3,19 @@ package com.example.qinggong.activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.adsmogo.adapters.AdsMogoCustomEventPlatformEnum;
+import com.adsmogo.adview.AdsMogoLayout;
+import com.adsmogo.controller.listener.AdsMogoListener;
 import com.example.qinggong.R;
 import com.example.qinggong.db.QingGongDB;
 import com.example.qinggong.util.CustomAlertDialog;
@@ -23,10 +29,71 @@ public class DoneActivity extends BaseActivity {
     Spinner sp_ages,sp_months;
     Button btn_return,btn_result;
     QingGongDB qingGongDB;
+    AdsMogoLayout adsMogoLayoutCode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.done);
+
+        /** 代码方式添加广告，如果您使用XML配置方式添加广告，不需要以下代码 **/
+        //adsMogoLayoutCode = new AdsMogoLayout(this, getResources().getString(R.string.MogoID), AdsMogoLayoutPosition.CENTER_BOTTOM, AdsMogoSize.AdsMoGoBanner,false);
+        adsMogoLayoutCode = new AdsMogoLayout(this, getResources().getString(R.string.MogoID));
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT);
+        // 设置广告出现的位置(悬浮于底部)
+        params.bottomMargin = 0;
+        adsMogoLayoutCode.setAdsMogoListener(new AdsMogoListener() {
+            @Override
+            public void onInitFinish() {
+
+            }
+
+            @Override
+            public void onRequestAd(String s) {
+
+            }
+
+            @Override
+            public void onRealClickAd() {
+
+            }
+
+            @Override
+            public void onReceiveAd(ViewGroup viewGroup, String s) {
+
+            }
+
+            @Override
+            public void onFailedReceiveAd() {
+
+            }
+
+            @Override
+            public void onClickAd(String s) {
+
+            }
+
+            @Override
+            public boolean onCloseAd() {
+                return false;
+            }
+
+            @Override
+            public void onCloseMogoDialog() {
+
+            }
+
+            @Override
+            public Class getCustomEvemtPlatformAdapterClass(AdsMogoCustomEventPlatformEnum adsMogoCustomEventPlatformEnum) {
+                return null;
+            }
+        });
+        params.gravity = Gravity.BOTTOM;
+        addContentView(adsMogoLayoutCode, params);
+        /*********************** 代码添加广告结束 ************************/
+
+
         qingGongDB=QingGongDB.getInstance();
         btn_return=(Button)findViewById(R.id.done_btn_return);
         btn_result=(Button)findViewById(R.id.done_btn_result);
@@ -116,5 +183,11 @@ public class DoneActivity extends BaseActivity {
         String[] months=getResources().getStringArray(R.array.months);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,months);
         sp_months.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        adsMogoLayoutCode.clearThread();
+        super.onDestroy();
     }
 }

@@ -81,6 +81,12 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="AdsMOGO_Android_SDK_1.5.4" level="project" />
+    <orderEntry type="library" exported="" name="YoumiSdk_v4.10_2014-11-04" level="project" />
+    <orderEntry type="library" exported="" name="android-support-v4" level="project" />
+    <orderEntry type="library" exported="" name="gdt_mob_release_v4.2.463" level="project" />
+    <orderEntry type="library" exported="" name="domob_android_sdk_4.2.7" level="project" />
+    <orderEntry type="library" exported="" name="adchina_android_sdk_v3.2.0" level="project" />
   </component>
 </module>
 

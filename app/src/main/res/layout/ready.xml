@@ -25,8 +25,8 @@
             android:layout_height="wrap_content"
             android:text="@string/ready_tv_year_text"
             android:layout_below="@id/ready_tv_title"
-            android:textSize="@dimen/btn_size"
-            android:paddingTop="@dimen/padding" />
+            android:paddingTop="@dimen/padding_top"
+            android:textSize="@dimen/btn_size"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,4 +122,16 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
+    <!--这里是广告位-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.adsmogo.adview.AdsMogoLayout
+            android:id="@+id/adsMogoView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp" />
+    </LinearLayout>
 </LinearLayout>

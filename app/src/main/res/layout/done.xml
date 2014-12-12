@@ -106,4 +106,16 @@
         </LinearLayout>
 
     </RelativeLayout>
+    <!--这里是广告位-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.adsmogo.adview.AdsMogoLayout
+            android:id="@+id/adsMogoView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp" />
+    </LinearLayout>
 </LinearLayout>

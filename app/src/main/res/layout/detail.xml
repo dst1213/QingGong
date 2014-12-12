@@ -50,6 +50,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/token"
+                android:layout_margin="@dimen/margin"
+                android:padding="@dimen/padding"
                 ></ListView>
             <Button android:id="@+id/detail_btn_return"
                 android:layout_width="wrap_content"
@@ -57,9 +59,22 @@
                 android:background="@drawable/btn_main"
                 android:textSize="@dimen/btn_size"
                 android:layout_gravity="center"
+                android:layout_margin="@dimen/margin"
                 android:text="@string/detail_btn_return_text"
                 android:layout_below="@id/detail_lv_qinggong"/>
             </LinearLayout>
 
     </RelativeLayout>
+    <!--这里是广告位-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.adsmogo.adview.AdsMogoLayout
+            android:id="@+id/adsMogoView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp" />
+    </LinearLayout>
 </LinearLayout>
