@@ -47,7 +47,21 @@
             >
         </activity>
 
-        <!-- 声明AdChina的Activity -->
+        <!-- 有米传媒 Android SDK 配置(可直接复制节点) -->
+        <!-- SDK 必须配置 -->
+        <service android:name="net.youmi.android.BoService" >
+        </service>
+
+        <activity
+            android:name="net.youmi.android.BoBrowser"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <!-- 声明多盟的Activity -->
+        <activity
+            android:name="cn.domob.android.ads.DomobActivity"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <!--  声明AdChina的Activity-->
         <activity
             android:name="com.adchina.android.ads.views.AdBrowserView"
             android:configChanges="orientation|keyboard|keyboardHidden"
