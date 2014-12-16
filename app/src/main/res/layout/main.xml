@@ -62,6 +62,19 @@
                 android:textSize="@dimen/btn_size"
                 android:layout_margin="@dimen/margin"
                 android:text="@string/main_btn_view_text" />
+            <Button
+                android:id="@+id/main_btn_ShowAd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/token"
+                android:textColor="@color/ad_color"
+                android:textSize="@dimen/ad_size"
+                android:shadowColor="@color/ad_back"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="2"
+                android:layout_margin="@dimen/margin"
+                android:text="@string/main_btn_showAd_text" />
         </LinearLayout>
     </RelativeLayout>
     <!--这里是广告位-->

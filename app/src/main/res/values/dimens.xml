@@ -5,6 +5,7 @@
     <dimen name="title">32sp</dimen>
     <dimen name="tv_size">18sp</dimen>
     <dimen name="btn_size">24sp</dimen>
+    <dimen name="ad_size">18sp</dimen>
     <dimen name="padding">15dp</dimen>
     <dimen name="padding_top">10dp</dimen>
     <dimen name="margin">5dp</dimen>
