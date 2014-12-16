@@ -133,8 +133,8 @@ public class DetailActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        if (adsMogoLayoutCode != null)
-            adsMogoLayoutCode.clearThread();
+//        if (adsMogoLayoutCode != null)
+//            adsMogoLayoutCode.clearThread();
         super.onDestroy();
     }
 }
