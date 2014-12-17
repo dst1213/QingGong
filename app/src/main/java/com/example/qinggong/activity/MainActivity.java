@@ -23,6 +23,7 @@ import com.adsmogo.util.AdsMogoSize;
 import com.example.qinggong.R;
 import com.example.qinggong.util.CustomAlertDialog;
 import com.example.qinggong.util.CustomAlertDialogCallbackListener;
+import com.example.qinggong.util.HideAdUtil;
 
 /**
  * Created by ZJGJK03 on 2014/12/3.
@@ -38,7 +39,9 @@ public class MainActivity extends BaseActivity {
 
         initMogoBanner();
 
-        initMogoInterstitial();
+        if(!HideAdUtil.isHideAd()) {
+            initMogoInterstitial();
+        }
 
         btn_done = (Button) findViewById(R.id.main_btn_done);
         btn_ready = (Button) findViewById(R.id.main_btn_ready);
@@ -51,20 +54,24 @@ public class MainActivity extends BaseActivity {
         if(btn_detail!=null)
             btn_detail.setOnClickListener(listener);
         btn_show=(Button)findViewById(R.id.main_btn_ShowAd);
+        if(HideAdUtil.isHideAd())
+        {
+            btn_show.setVisibility(View.GONE);
+        }
         if(btn_show!=null)
             btn_show.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //判断是否存在默认全插屏对象
-                    if(AdsMogoInterstitialManager.shareInstance().containDefaultInterstitia())
+                    showInterstitial();
+                    if(HideAdUtil.hideAd())
                     {
-                        /**
-                         * 展示全插屏
-                         * 参数解释：是否等待全插屏广告的展示，true表示等待，false不等待
-                         * 等待的逻辑：检查是否有全插屏缓存，若有则直接展示，若没有则等待请求到广告后立即展示(注意：在请求广告期间，没有调用interstitialCancel()取消全插屏等待方法时会展示，反则不会展示)。
-                         * 不等待逻辑：检查是否有全插屏缓存，若有则直接展示，若没有则不等待。
-                         */
-                        AdsMogoInterstitialManager.shareInstance().defaultInterstitial().interstitialShow(true);
+                        Toast.makeText(MainActivity.this,"去掉广告成功",Toast.LENGTH_SHORT).show();
+                        btn_show.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        Toast.makeText(MainActivity.this,"去掉广告失败，请重启程序后再重试",Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -166,21 +173,7 @@ public class MainActivity extends BaseActivity {
     AdsMogoInterstitialListener adsMogoInterstitialListener=new AdsMogoInterstitialListener() {
         @Override
         public void onInitFinish() {
-            //判断是否存在默认全插屏对象
-            if(AdsMogoInterstitialManager.shareInstance().containDefaultInterstitia())
-            {
-                /**
-                 * 展示全插屏
-                 * 参数解释：是否等待全插屏广告的展示，true表示等待，false不等待
-                 * 等待的逻辑：检查是否有全插屏缓存，若有则直接展示，若没有则等待请求到广告后立即展示(注意：在请求广告期间，没有调用interstitialCancel()取消全插屏等待方法时会展示，反则不会展示)。
-                 * 不等待逻辑：检查是否有全插屏缓存，若有则直接展示，若没有则不等待。
-                 */
-                AdsMogoInterstitialManager.shareInstance().defaultInterstitial().interstitialShow(true);
-            }
-            else
-            {
-                Toast.makeText(MainActivity.this,"无法显示全屏广告",Toast.LENGTH_SHORT).show();
-            }
+            showInterstitial();
         }
 
         @Override
@@ -225,11 +218,34 @@ public class MainActivity extends BaseActivity {
     };
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        showInterstitial();
+    }
+
+    void showInterstitial()
+    {
+        if(HideAdUtil.isHideAd()) return;
+        //判断是否存在默认全插屏对象
+        if(AdsMogoInterstitialManager.shareInstance().containDefaultInterstitia())
+        {
+            /**
+             * 展示全插屏
+             * 参数解释：是否等待全插屏广告的展示，true表示等待，false不等待
+             * 等待的逻辑：检查是否有全插屏缓存，若有则直接展示，若没有则等待请求到广告后立即展示(注意：在请求广告期间，没有调用interstitialCancel()取消全插屏等待方法时会展示，反则不会展示)。
+             * 不等待逻辑：检查是否有全插屏缓存，若有则直接展示，若没有则不等待。
+             */
+            AdsMogoInterstitialManager.shareInstance().defaultInterstitial().interstitialShow(true);
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         AdsMogoLayout.clear();
         if (adsMogoLayoutCode != null)
             adsMogoLayoutCode.clearThread();
-        AdsMogoInterstitialManager.shareInstance().removeDefaultInterstitialInstance();
+        if (!HideAdUtil.isHideAd())
+            AdsMogoInterstitialManager.shareInstance().removeDefaultInterstitialInstance();
         super.onDestroy();
     }
 
@@ -269,6 +285,8 @@ public class MainActivity extends BaseActivity {
         {
             AdsMogoInterstitialManager.shareInstance().defaultInterstitial().changeCurrentActivity(MainActivity.this);
             AdsMogoInterstitialManager.shareInstance().defaultInterstitial().setAdsMogoInterstitialListener(adsMogoInterstitialListener);
+            //AdsMogoInterstitialManager.shareInstance().defaultInterstitial().interstitialShow(true);
+            //Toast.makeText(MainActivity.this,"重新显示广告",Toast.LENGTH_SHORT).show();
         }
     }
 
