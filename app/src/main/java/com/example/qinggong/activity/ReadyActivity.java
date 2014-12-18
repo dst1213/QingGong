@@ -20,6 +20,7 @@ import com.adsmogo.adview.AdsMogoLayout;
 import com.adsmogo.controller.listener.AdsMogoListener;
 import com.example.qinggong.R;
 import com.example.qinggong.db.QingGongDB;
+import com.example.qinggong.util.Banner;
 import com.example.qinggong.util.CustomAlertDialog;
 import com.example.qinggong.util.CustomAlertDialogCallbackListener;
 import com.example.qinggong.util.LogUtil;
@@ -36,68 +37,15 @@ public class ReadyActivity extends BaseActivity {
     QingGongDB qingGongDB;
     Spinner sp_year, sp_sex, sp_age;
     Button btn_return, btn_result;
-    AdsMogoLayout adsMogoLayoutCode;
+    Banner banner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ready);
 
         /** 代码方式添加广告，如果您使用XML配置方式添加广告，不需要以下代码 **/
-        //adsMogoLayoutCode = new AdsMogoLayout(this, getResources().getString(R.string.MogoID), AdsMogoLayoutPosition.CENTER_BOTTOM, AdsMogoSize.AdsMoGoBanner,false);
-        adsMogoLayoutCode = new AdsMogoLayout(this, getResources().getString(R.string.MogoID));
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT);
-        // 设置广告出现的位置(悬浮于底部)
-        params.bottomMargin = 0;
-        adsMogoLayoutCode.setAdsMogoListener(new AdsMogoListener() {
-            @Override
-            public void onInitFinish() {
-
-            }
-
-            @Override
-            public void onRequestAd(String s) {
-
-            }
-
-            @Override
-            public void onRealClickAd() {
-
-            }
-
-            @Override
-            public void onReceiveAd(ViewGroup viewGroup, String s) {
-
-            }
-
-            @Override
-            public void onFailedReceiveAd() {
-
-            }
-
-            @Override
-            public void onClickAd(String s) {
-
-            }
-
-            @Override
-            public boolean onCloseAd() {
-                return false;
-            }
-
-            @Override
-            public void onCloseMogoDialog() {
-
-            }
-
-            @Override
-            public Class getCustomEvemtPlatformAdapterClass(AdsMogoCustomEventPlatformEnum adsMogoCustomEventPlatformEnum) {
-                return null;
-            }
-        });
-        params.gravity = Gravity.BOTTOM;
-        addContentView(adsMogoLayoutCode, params);
+        banner=new Banner(ReadyActivity.this);
+        banner.initBanner();
         /*********************** 代码添加广告结束 ************************/
 
         qingGongDB = QingGongDB.getInstance();
@@ -216,8 +164,7 @@ public class ReadyActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-//        if (adsMogoLayoutCode != null)
-//            adsMogoLayoutCode.clearThread();
+        banner.clearThread();
         super.onDestroy();
     }
 }

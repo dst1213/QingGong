@@ -2,4 +2,5 @@
 <resources>
     <color name="ad_color">#FF0000</color>
     <color name="ad_back">#000000</color>
+    <color name="ad_loading">#34000000</color>
 </resources>

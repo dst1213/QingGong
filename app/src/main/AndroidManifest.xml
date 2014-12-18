@@ -57,9 +57,37 @@
             android:theme="@android:style/Theme.Translucent" />
 
         <!--应用汇-->
-        <meta-data
-            android:name="appchina"
-            android:value="10050"></meta-data>
+        <!--<meta-data-->
+            <!--android:name="appchina"-->
+            <!--android:value="10050"></meta-data>-->
+        <!--机锋-->
+        <!--<meta-data-->
+            <!--android:name="gfan"-->
+            <!--android:value="10020"></meta-data>-->
+        <!-- 91-->
+        <!--<meta-data-->
+            <!--android:name="91sj"-->
+            <!--android:value="10110"></meta-data>-->
+        <!-- 华为-->
+        <!--<meta-data-->
+            <!--android:name="huawei"-->
+            <!--android:value="10220"></meta-data>-->
+        <!-- 腾讯-->
+        <!--<meta-data-->
+            <!--android:name="tap"-->
+            <!--android:value="10360"></meta-data>-->
+        <!-- 小米-->
+        <!--<meta-data-->
+            <!--android:name="xiaomi"-->
+            <!--android:value="10440"></meta-data>-->
+        <!-- 联想市场-->
+        <!--<meta-data-->
+            <!--android:name="lenovo"-->
+            <!--android:value="10040"></meta-data>-->
+        <!-- 魅族商店-->
+        <!--<meta-data-->
+            <!--android:name="meizu"-->
+            <!--android:value="10280"></meta-data>-->
     </application>
 
 </manifest>

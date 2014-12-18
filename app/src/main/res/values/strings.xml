@@ -3,6 +3,7 @@
     <string name="MogoID">8a4624fa02ba4cc190819ff0f45a5930</string>
     <string name="app_name">清宫预测表</string>
     <string name="hello_world">Hello world!</string>
+    <string name="ad_loading">广告加载中。。。</string>
     <string name="action_settings">设置</string>
     <string name="start_tv_qinggongbiao">清宫表</string>
     <string name="start_tv_qinggongbiao_content">\t\t清宫生男生女表是由中国古人发明的，埋在一个有700多年历史的皇陵下。由于时代久远，清宫表来历的真实性无从考究，古人是根据阴阳五行和八卦推算演译，再加上时间推算而得。清宫表由两部分构成，横坐标为怀孕月份，从1月到12月，纵坐标为年龄，从18岁到45岁，很多人问到清宫表到底怎样观看，要点就在这两部分，女性年龄是以农历虚龄（即真实年龄加1岁）算，而怀孕月份即是受孕的那个月份，当然亦是以农历算，横坐标和纵坐标对正过来就测试到是生男还是生女。</string>
@@ -12,7 +13,7 @@
     <string name="main_btn_ready_text">规划怀孕日期</string>
     <string name="main_btn_view_text">查看清宫表</string>
     <string name="main_tv_what_text">\t请选择您需要的操作：</string>
-    <string name="main_btn_showAd_text">点击此处去除广告\n点击广告支持作者</string>
+    <string name="main_btn_showAd_text">点击广告支持作者</string>
     <string name="done_tv_title_text">预测生男生女</string>
     <string name="done_tv_age_month_text">\t请输入您的年龄(虚岁)和怀孕的月份(农历)：</string>
     <string name="done_sp_age_prompt">请选择年龄：</string>
